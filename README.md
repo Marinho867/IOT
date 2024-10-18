@@ -1,5 +1,5 @@
 # IOT (Internet da coisas)
-> o link da bosch das especificações da chave
+> Placa ESP32 sensor de temperatura e humidade DHT22
 
 <br/>
 <br/>
