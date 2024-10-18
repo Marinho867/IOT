@@ -1,6 +1,6 @@
 # IOT
-### Placa ESP32 com um sensor de temperatura DTH22 enviando as leituras feitas a um MQTT broquer 
-e uma página web apresentando essas leituras em tempo real.
+### Placa ESP32 com um sensor de temperatura DTH22 
+#### enviando as leituras feitas a um MQTT broquer e uma página web apresentando essas leituras em tempo real.
 
 ## Motivação.
 
@@ -13,6 +13,7 @@ ideais aos nossos pequenos e isso tudo por uma pagina web.
 
 ## Será atualizado?
 #### Sim, irei aos poucos incluindo mais funções a pagina web como poder modificar a temperatura, ligar ou desligar o humidificador.
+
 
 ## Qual linguagem foi desenvolvido o projeto?
 #### Na placa EPSP32 foi usado micro Python e na página web HTML.
