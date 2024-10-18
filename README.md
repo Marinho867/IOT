@@ -1,6 +1,10 @@
 # IOT
-### Placa ESP32 com um sensor de temperatura DTH22 
-#### enviando as leituras feitas a um MQTT broquer e uma página web apresentando essas leituras em tempo real.
+## Placa ESP32 com um sensor de temperatura DTH22 
+
+
+## Como funciona? 
+#### A placa e o sensor trabalham monitorando a temperatura e a humidade do ambiente e enviando as leituras feitas a um MQTT broquer,
+uma página web apresenta essas leituras em tempo real.
 
 ## Motivação.
 
