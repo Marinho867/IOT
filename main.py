@@ -9,9 +9,9 @@ ssid = "Wokwi-GUEST"
 password = ""
 
 # Configurações do Adafruit IO (MQTT)
-aio_user = "Wellemay"  # Nome de usuário do Adafruit IO
-aio_key = "aio_ZgtE43EusNcuwXD08b1Fm2lhXPCe"  # Sua chave de API do Adafruit IO
-aio_feed = "Wellemay/feeds/well-dot-teste"  # Feed correto
+aio_user = # Nome de usuário do Adafruit IO
+aio_key = # Sua chave de API do Adafruit IO
+aio_feed = # Feed correto
 
 mqtt_broker = "io.adafruit.com"
 mqtt_port = 1883
