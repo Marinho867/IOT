@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Temperatura e Umidade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .data {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        #temp {
+            color: #ff4500;
+        }
+        #humidity {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dados de Temperatura e Umidade</h1>
+
+    <div class="data">Temperatura: <span id="temp">--</span> °C</div>
+    <div class="data">Umidade: <span id="humidity">--</span> %</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+    <script>
+        // Configurações MQTT
+        const AIO_USERNAME = "Wellemay";  // Seu nome de usuário no Adafruit IO
+        const AIO_KEY = "aio_ZgtE43EusNcuwXD08b1Fm2lhXPCe";  // Sua chave de API do Adafruit IO
+        const AIO_FEED = "well-dot-teste";  // Nome do feed
+
+        // Conectar ao broker do Adafruit IO
+        const client = new Paho.MQTT.Client("io.adafruit.com", 443, "clientId-" + Math.random().toString(16).substr(2, 8));
+
+        // Quando a conexão for estabelecida
+        client.onConnectionLost = function (responseObject) {
+            console.log("Conexão perdida: " + responseObject.errorMessage);
+        };
+
+        // Quando receber uma mensagem
+        client.onMessageArrived = function (message) {
+            console.log("Mensagem recebida: " + message.payloadString);
+            const data = message.payloadString.split(",");
+            const temp = data[0];
+            const humidity = data[1];
+
+            // Atualizar os valores na página
+            document.getElementById("temp").textContent = temp;
+            document.getElementById("humidity").textContent = humidity;
+        };
+
+        // Função de conexão
+        function connectMQTT() {
+            client.connect({
+                useSSL: true,
+                userName: AIO_USERNAME,
+                password: AIO_KEY,
+                onSuccess: function () {
+                    console.log("Conectado ao Adafruit IO!");
+                    // Inscrever-se no feed
+                    client.subscribe(AIO_USERNAME + "/feeds/" + AIO_FEED);
+                },
+                onFailure: function (err) {
+                    console.error("Erro na conexão MQTT: " + err.errorMessage);
+                }
+            });
+        }
+
+        // Conectar ao Adafruit IO assim que a página for carregada
+        window.onload = connectMQTT;
+    </script>
+
+</body>
+</html>
